@@ -2,7 +2,7 @@
 using System.Linq;
 using CustomMvvm;
 using CustomMvvm.Localization;
-using HrcComponentStorage.Data;
+using CustomMvvm.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -21,7 +21,7 @@ namespace CustomMvvmTest.Localization
         public void Initialize()
         {
             _settingsMock = new Mock<ISettingsProvider>();
-            _settingsMock.Setup( x => x[SettingsKeys.Culture] ).Returns( SettingsCulture );
+            _settingsMock.Setup( x => x["Culture"] ).Returns( SettingsCulture );
             _resourceMock = new Mock<IResourceManager>();
             _localizationProvider = new WpfLocalizationProvider( _settingsMock.Object, _resourceMock.Object );
         }
@@ -56,7 +56,7 @@ namespace CustomMvvmTest.Localization
         [TestMethod]
         public void GetAvailableLanguagesParsesCulturesFromSettings()
         {
-            _settingsMock.Setup( x => x[SettingsKeys.AvailableCultures] ).Returns( SettingsAvailableCultures );
+            _settingsMock.Setup( x => x["AvailableCultures"] ).Returns( SettingsAvailableCultures );
             var result = _localizationProvider.GetAvailableLanguages();
 
             Assert.AreEqual( 4, result.Count() );

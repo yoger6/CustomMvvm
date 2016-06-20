@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CustomMvvm.Utilities</RootNamespace>
     <AssemblyName>CustomMvvm.Utilities</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,16 +40,11 @@
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="IFolderBrowserDialog.cs" />
+    <Compile Include="ISettingsProvider.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeSwitch.cs" />
     <Compile Include="WindowsFolderBrowserDialog.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomMvvm\CustomMvvm.csproj">
-      <Project>{84D392E3-A0A8-486B-82FA-B86B3502A406}</Project>
-      <Name>CustomMvvm</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

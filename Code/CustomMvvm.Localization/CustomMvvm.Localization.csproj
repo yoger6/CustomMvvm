@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E338C807-94A9-463F-99A1-FC6997F4B383}</ProjectGuid>
+    <ProjectGuid>{EC6D85FE-F506-43E7-905A-220AB6107F31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CustomMvvm.Localization</RootNamespace>
     <AssemblyName>CustomMvvm.Localization</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -75,9 +75,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\HrcComponentStorage\Code\HrcComponentStorage.Data\HrcComponentStorage.Data.csproj">
-      <Project>{6F33C215-46DD-4635-81D2-AAAD50E09A84}</Project>
-      <Name>HrcComponentStorage.Data</Name>
+    <ProjectReference Include="..\CustomMvvm.Utilities\CustomMvvm.Utilities.csproj">
+      <Project>{E613B0A7-13DE-45C1-9981-F48283AABB4E}</Project>
+      <Name>CustomMvvm.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomMvvm\CustomMvvm.csproj">
       <Project>{84D392E3-A0A8-486B-82FA-B86B3502A406}</Project>

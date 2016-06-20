@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using HrcComponentStorage.Data;
+using CustomMvvm.Utilities;
 
 namespace CustomMvvm.Localization
 {
@@ -43,7 +43,7 @@ namespace CustomMvvm.Localization
 
         public void Save()
         {
-            _settingsProvider[SettingsKeys.Culture] = _selectedCulture.Name;
+            _settingsProvider["Culture"] = _selectedCulture.Name;
             _originalCulture = _selectedCulture;
         }
     }

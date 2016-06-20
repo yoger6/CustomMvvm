@@ -71,17 +71,13 @@
     <Compile Include="TypeSwitchWithReturnTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Code\CustomMvvm\CustomMvvm.csproj">
-      <Project>{84d392e3-a0a8-486b-82fa-b86b3502a406}</Project>
-      <Name>CustomMvvm</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Code\CustomMvvm.Localization\CustomMvvm.Localization.csproj">
-      <Project>{E338C807-94A9-463F-99A1-FC6997F4B383}</Project>
-      <Name>CustomMvvm.Localization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Code\CustomMvvm.Utilities\CustomMvvm.Utilities.csproj">
       <Project>{E613B0A7-13DE-45C1-9981-F48283AABB4E}</Project>
       <Name>CustomMvvm.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Code\CustomMvvm\CustomMvvm.csproj">
+      <Project>{84d392e3-a0a8-486b-82fa-b86b3502a406}</Project>
+      <Name>CustomMvvm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

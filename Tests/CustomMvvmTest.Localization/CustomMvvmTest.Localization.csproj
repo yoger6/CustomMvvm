@@ -63,17 +63,17 @@
     <Compile Include="WpfLocalizationProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\HrcComponentStorage\Code\HrcComponentStorage.Data\HrcComponentStorage.Data.csproj">
-      <Project>{6F33C215-46DD-4635-81D2-AAAD50E09A84}</Project>
-      <Name>HrcComponentStorage.Data</Name>
+    <ProjectReference Include="..\..\Code\CustomMvvm.Localization\CustomMvvm.Localization.csproj">
+      <Project>{EC6D85FE-F506-43E7-905A-220AB6107F31}</Project>
+      <Name>CustomMvvm.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Code\CustomMvvm.Utilities\CustomMvvm.Utilities.csproj">
+      <Project>{E613B0A7-13DE-45C1-9981-F48283AABB4E}</Project>
+      <Name>CustomMvvm.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Code\CustomMvvm\CustomMvvm.csproj">
       <Project>{84D392E3-A0A8-486B-82FA-B86B3502A406}</Project>
       <Name>CustomMvvm</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Code\CustomMvvm.Localization\CustomMvvm.Localization.csproj">
-      <Project>{E338C807-94A9-463F-99A1-FC6997F4B383}</Project>
-      <Name>CustomMvvm.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using HrcComponentStorage.Data;
+using CustomMvvm.Utilities;
 
 namespace CustomMvvm.Localization
 {
@@ -18,7 +18,7 @@ namespace CustomMvvm.Localization
         {
             _settingsProvider = settingsProvider;
             _resourceManager = resourceManager;
-            SetLanguage( new CultureInfo( (string)_settingsProvider[SettingsKeys.Culture] ) );
+            SetLanguage( new CultureInfo( (string)_settingsProvider["Culture"] ) );
         }
        
         public void SetLanguage( CultureInfo culture )
@@ -30,14 +30,14 @@ namespace CustomMvvm.Localization
 
         public IEnumerable<CultureInfo> GetAvailableLanguages()
         {
-            var cultures = ((string)_settingsProvider[SettingsKeys.AvailableCultures]).Split( ';' );
+            var cultures = ((string)_settingsProvider["AvailableCultures"]).Split( ';' );
 
             return cultures.Select( culture => new CultureInfo( culture ) );
         }
 
         public CultureInfo GetCurrentCulture()
         {
-            return new CultureInfo( (string)_settingsProvider[SettingsKeys.Culture] );
+            return new CultureInfo( (string)_settingsProvider["Culture"] );
         }
 
         private string GetTranslation( string key )

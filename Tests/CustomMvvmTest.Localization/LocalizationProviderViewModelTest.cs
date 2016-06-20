@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using CustomMvvm.Localization;
-using HrcComponentStorage.Data;
+using CustomMvvm.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
