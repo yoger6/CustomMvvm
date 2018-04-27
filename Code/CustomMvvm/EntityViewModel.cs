@@ -16,51 +16,45 @@ namespace CustomMvvm
         private bool _alreadyNotifiedAboutChanges;
 
         /// <summary>
-        /// Determines if view model is valid
+        /// Set true when entity doesn't exist yet in database
         /// </summary>
-        public bool IsValid => !HasErrors;
+        public bool HasBeenAdded { get; set; }
 
         /// <summary>
         /// Determines state of view model
         /// </summary>
         public bool HasChanges => HasBeenAdded || IsToBeDeleted || VerifyModelForChanges();
-        
-        /// <summary>
-        /// Set true when entity doesn't exist yet in database
-        /// </summary>
-        public bool HasBeenAdded { get; set; }
 
         /// <summary>
         /// Set true when entity should be removed from database
         /// </summary>
         public bool IsToBeDeleted
         {
-            get { return _isToBeDeleted; }
-            set
-            {
-                if (_isToBeDeleted != value)
-                {
-                    _isToBeDeleted = value;
-                    OnPropertyChanged();
-                }
-            }
+            get => _isToBeDeleted;
+            set => Set( ref _isToBeDeleted, value );
         }
+
+        /// <summary>
+        /// Determines if view model is valid
+        /// </summary>
+        public bool IsValid => !HasErrors;
 
         /// <summary>
         /// Commits changes to underlying model
         /// </summary>
         public ICommand SaveCommand { get; }
-        
+
         /// <summary>
         /// Default constructor
         /// </summary>
         /// <param name="model">Entity represented by this view model</param>
         protected EntityViewModel( T model )
         {
-            if (model == null)
+            if ( model == null )
             {
-                throw new ArgumentNullException( nameof( model ) );
+                throw new ArgumentNullException( nameof(model) );
             }
+
             Model = model;
             SaveCommand = new WatchingCommand<object>( o => SaveChangesToModel(), () => IsValid, this, nameof(HasErrors) );
         }
@@ -85,13 +79,14 @@ namespace CustomMvvm
         /// <returns>Returns true if properties doesn't match</returns>
         protected abstract bool VerifyModelForChanges();
 
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null )
+        protected override void OnPropertyChanged( [CallerMemberName] string propertyName = null )
         {
-            if (!_alreadyNotifiedAboutChanges && propertyName != nameof(HasChanges))
+            if ( !_alreadyNotifiedAboutChanges && propertyName != nameof(HasChanges) )
             {
                 _alreadyNotifiedAboutChanges = true;
                 OnPropertyChanged( nameof(HasChanges) );
             }
+
             base.OnPropertyChanged( propertyName );
         }
     }

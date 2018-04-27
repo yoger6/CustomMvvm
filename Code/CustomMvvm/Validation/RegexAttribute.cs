@@ -4,7 +4,7 @@ namespace CustomMvvm.Validation
 {
     public class RegexAttribute : ValidationAttribute
     {
-        private string _regex;
+        private readonly string _regex;
 
         public RegexAttribute( string regex )
         {

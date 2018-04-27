@@ -6,7 +6,7 @@ namespace CustomMvvmTest.ValidationTests
     [TestFixture]
     public class AlphanumericTest
     {
-        private AlphanumericAttribute _validator;
+        private readonly AlphanumericAttribute _validator;
 
         public AlphanumericTest()
         {

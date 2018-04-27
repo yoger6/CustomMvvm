@@ -6,7 +6,7 @@ namespace CustomMvvmTest.ValidationTests
     [TestFixture]
     public class EmailAttributeTest
     {
-        private EmailAttribute _attribute;
+        private readonly EmailAttribute _attribute;
 
         public EmailAttributeTest()
         {

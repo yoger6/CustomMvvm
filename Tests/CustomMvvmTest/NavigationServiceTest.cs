@@ -64,7 +64,7 @@ namespace CustomMvvmTest
         [Test]
         public void GoBackWhenCannotThrowsException()
         {
-            TestDelegate action = new TestDelegate( () => _service.GoBack() );
+            TestDelegate action = () => _service.GoBack();
 
             Assert.Throws<InvalidOperationException>( action );
         }

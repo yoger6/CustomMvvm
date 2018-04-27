@@ -24,8 +24,8 @@ namespace CustomMvvmTest
     [TestFixture]
     public class MainViewModelBaseTest
     {
-        private Mock<INavigationService> _navigationServiceMock;
-        private MainViewModelTestImplementation _viewModel;
+        private readonly Mock<INavigationService> _navigationServiceMock;
+        private readonly MainViewModelTestImplementation _viewModel;
 
         public MainViewModelBaseTest()
         {

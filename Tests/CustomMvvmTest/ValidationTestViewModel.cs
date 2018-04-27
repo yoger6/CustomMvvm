@@ -1,4 +1,5 @@
 ﻿using CustomMvvm;
+using CustomMvvm.Validation;
 
 namespace CustomMvvmTest
 {
@@ -6,16 +7,11 @@ namespace CustomMvvmTest
     {
         private int _id;
 
-        [CustomMvvm.Validation.Range( 0, 2 )]
+        [Range( 0, 2 )]
         public int Id
         {
-            get { return _id; }
-            set
-            {
-                if (value == _id) return;
-                _id = value;
-                OnPropertyChanged();
-            }
+            get => _id;
+            set => Set( ref _id, value );
         }
     }
 }

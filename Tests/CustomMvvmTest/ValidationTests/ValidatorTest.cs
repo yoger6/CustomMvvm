@@ -7,7 +7,7 @@ namespace CustomMvvmTest.ValidationTests
     [TestFixture]
     public class ValidatorTest
     {
-        private Validator _validator;
+        private readonly Validator _validator;
         private ValidationAdvancedScenario _advancedScenario;
 
         public ValidatorTest()

@@ -14,15 +14,13 @@ namespace CustomMvvm.Localization
 
         public CultureInfo SelectedCulture
         {
-            get { return _selectedCulture; }
-            set {
-                if (Equals( value, _selectedCulture ))
+            get => _selectedCulture;
+            set
+            {
+                if ( Set( ref _selectedCulture, value ) )
                 {
-                    return;
+                    _localizationProvider.SetLanguage( value );
                 }
-                _selectedCulture = value;
-                _localizationProvider.SetLanguage( value );
-                OnPropertyChanged();
             }
         }
 
@@ -32,9 +30,9 @@ namespace CustomMvvm.Localization
             _settingsProvider = settingsProvider;
             _selectedCulture = _localizationProvider.GetCurrentCulture();
             _originalCulture = _selectedCulture;
-            AvailableLanguages = new List<CultureInfo>(localizationProvider.GetAvailableLanguages());
+            AvailableLanguages = new List<CultureInfo>( localizationProvider.GetAvailableLanguages() );
         }
-        
+
         public override void OnNavigatedFrom()
         {
             SelectedCulture = _originalCulture;

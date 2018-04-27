@@ -14,7 +14,7 @@ namespace CustomMvvmTest.ValidationTests
         public string InvalidName { get; set; }
         [AlwaysValid]
         public string ValidName { get; set; }
-        private List<string> _errors;
+        private readonly List<string> _errors;
 
         public ValidationAdvancedScenario( Validator validator )
             : base( validator )

@@ -11,7 +11,7 @@ namespace CustomMvvm.Navigation
         public bool CanGoBack => _navigationHistory.Any();
         public Type CurrentLocation { get; private set; }
 
-        private Stack<Type> _navigationHistory;
+        private readonly Stack<Type> _navigationHistory;
 
         public NavigationService()
         {

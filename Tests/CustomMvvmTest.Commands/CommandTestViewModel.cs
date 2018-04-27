@@ -7,24 +7,20 @@ namespace CustomMvvmTest.Commands
     {
         private int _id;
 
+        public WatchingCommand<object> Command { get; }
+
         public int Id
         {
-            private get { return _id; }
-            set
-            {
-                if (value == _id) return;
-                _id = value;
-                OnPropertyChanged();
-            }
+            private get => _id;
+            set => Set( ref _id, value );
         }
 
-        public WatchingCommand<object> Command { get; }
         public WatchingCommand ParameterlessCommand { get; }
 
         public CommandTestViewModel( int desiredPropertyValue )
         {
-            Command = new WatchingCommand<object>( o => { }, () => Id == desiredPropertyValue, this, nameof( Id ) );
-            ParameterlessCommand= new WatchingCommand( () => { }, () => Id == desiredPropertyValue, this, nameof( Id ) );
+            Command = new WatchingCommand<object>( o => { }, () => Id == desiredPropertyValue, this, nameof(Id) );
+            ParameterlessCommand = new WatchingCommand( () => { }, () => Id == desiredPropertyValue, this, nameof(Id) );
         }
     }
 }

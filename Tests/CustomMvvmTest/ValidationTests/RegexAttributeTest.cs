@@ -6,7 +6,7 @@ namespace CustomMvvmTest.ValidationTests
     [TestFixture] 
     public class RegexAttributeTest
     {
-        private RegexAttribute _validator;
+        private readonly RegexAttribute _validator;
 
         public RegexAttributeTest()
         {

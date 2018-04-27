@@ -8,14 +8,10 @@ namespace CustomMvvmTest
 
         public int Id
         {
-            get { return _id; }
-            set
-            {
-                _id = value;
-                OnPropertyChanged();
-            }
+            get => _id;
+            set => Set( ref _id, value );
         }
-        
+
         public TestEntityViewModel( TestEntity model ) : base( model )
         {
         }

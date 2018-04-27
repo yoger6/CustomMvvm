@@ -23,11 +23,6 @@ namespace CustomMvvmTest.Commands
             Assert.Throws<ArgumentException>( testDelegate );
         }
 
-        private void InstantiateWatchingCommandWithInvalidContext()
-        {
-            new WatchingCommand<object>( o => { }, () => false, this );
-        }
-
         [Test]
         public void EventRisedByPropertyChangeToDesiredValue()
         {
@@ -42,6 +37,11 @@ namespace CustomMvvmTest.Commands
             var wasRised = ChangeIdAndCheckIfEventWasRised( 9 );
 
             Assert.IsFalse( wasRised );
+        }
+
+        private void InstantiateWatchingCommandWithInvalidContext()
+        {
+            new WatchingCommand<object>( o => { }, () => false, this );
         }
 
         private bool ChangeIdAndCheckIfEventWasRised( int id )

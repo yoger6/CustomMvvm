@@ -7,7 +7,7 @@ namespace CustomMvvmTest.ValidationTests
     [TestFixture]
     public class RangeValidatorTest
     {
-        private RangeAttribute _intAndStringCaseAttribute;
+        private readonly RangeAttribute _intAndStringCaseAttribute;
 
         public RangeValidatorTest()
         {
