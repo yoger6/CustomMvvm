@@ -11,7 +11,12 @@ namespace CustomMvvmTest.Localization
     [TestFixture]
     public class LocalizationProviderViewModelTest
     {
-        private IEnumerable<CultureInfo> AvailableLanguages
+        private Mock<ILocalizationProvider> _localizationMock;
+        private Mock<ISettingsProvider> _settingsMock;
+        private LocalizationProviderViewModel _viewModel;
+        private CultureInfo _defaultCulture;
+
+        private static IEnumerable<CultureInfo> AvailableLanguages
         {
             get
             {
@@ -20,10 +25,6 @@ namespace CustomMvvmTest.Localization
                 yield return new CultureInfo( "ru" );
             }
         }
-        private Mock<ILocalizationProvider> _localizationMock;
-        private Mock<ISettingsProvider> _settingsMock;
-        private LocalizationProviderViewModel _viewModel;
-        private CultureInfo _defaultCulture;
 
         [SetUp]
         public void Initialize()
@@ -65,7 +66,7 @@ namespace CustomMvvmTest.Localization
             _viewModel.OnNavigatedFrom();
 
             Assert.AreSame( _defaultCulture, _viewModel.SelectedCulture );
-            _localizationMock.Verify(x=>x.SetLanguage( _defaultCulture ));
+            _localizationMock.Verify( x => x.SetLanguage( _defaultCulture ) );
         }
 
         [Test]

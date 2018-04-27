@@ -11,11 +11,11 @@ namespace CustomMvvmTest.Localization
     [TestFixture]
     public class WpfLocalizationProviderTest
     {
-        private const string SettingsCulture = "ru";
-        private const string SettingsAvailableCultures = "ru;pl;en;de";
         private WpfLocalizationProvider _localizationProvider;
         private Mock<ISettingsProvider> _settingsMock;
         private Mock<IResourceManager> _resourceMock;
+        private const string SettingsAvailableCultures = "ru;pl;en;de";
+        private const string SettingsCulture = "ru";
 
         [SetUp]
         public void Initialize()
@@ -25,7 +25,7 @@ namespace CustomMvvmTest.Localization
             _resourceMock = new Mock<IResourceManager>();
             _localizationProvider = new WpfLocalizationProvider( _settingsMock.Object, _resourceMock.Object );
         }
-        
+
         [Test]
         public void ByDefaultSetsCultureProvidedBySettings()
         {
@@ -37,7 +37,7 @@ namespace CustomMvvmTest.Localization
         [Test]
         public void SetsProvidedCulture()
         {
-            var culture = new CultureInfo("de");
+            var culture = new CultureInfo( "de" );
 
             _localizationProvider.SetLanguage( culture );
             var actual = CultureInfo.DefaultThreadCurrentUICulture;
@@ -65,8 +65,8 @@ namespace CustomMvvmTest.Localization
         [Test]
         public void ReturnsPhrasesFromResourceManager()
         {
-            var key = "This is the key";
-            var expected = "And here's the response";
+            const string key = "This is the key";
+            const string expected = "And here's the response";
             _resourceMock.Setup( x => x.GetString( key ) ).Returns( expected );
 
             var actual = _localizationProvider[key];
