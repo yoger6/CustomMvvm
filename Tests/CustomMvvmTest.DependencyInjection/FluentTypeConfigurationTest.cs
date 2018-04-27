@@ -16,12 +16,12 @@ namespace CustomMvvmTest.DependencyInjection
             _config = new TypeConfiguration( typeof(Bar) );
             _fluent = new FluentTypeConfiguration( _config );
         }
-        
+
         [Test]
         public void CallingForSetsSupportedType()
         {
             _fluent.For<IBar>();
-            
+
             Assert.AreSame( typeof(IBar), _config.SupportedType );
         }
 
@@ -30,14 +30,14 @@ namespace CustomMvvmTest.DependencyInjection
         {
             _fluent.When<Foo>();
 
-            Assert.AreSame( typeof( Foo ), _config.InjectionTarget );
+            Assert.AreSame( typeof(Foo), _config.InjectionTarget );
         }
 
         [Test]
         public void CallingAsSingletonSetsSingleInstanceAndReturnsSelf()
         {
             _fluent.AsSingleton();
-            
+
             Assert.True( _config.SingleInstance );
         }
 

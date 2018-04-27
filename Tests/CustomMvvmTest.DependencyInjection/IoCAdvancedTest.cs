@@ -11,7 +11,7 @@ namespace CustomMvvmTest.DependencyInjection
         public void ReturnsItselfWhenRequestForIoC()
         {
             var ioc = Container.Resolve<IIoC>();
-            
+
             Assert.AreSame( Container, ioc );
         }
 
@@ -75,7 +75,7 @@ namespace CustomMvvmTest.DependencyInjection
 
             var foo = Container.Resolve<Foo>();
 
-            Assert.AreSame( typeof( AnotherBar ), foo.Bar.GetType() );
+            Assert.AreSame( typeof(AnotherBar), foo.Bar.GetType() );
         }
 
         [Test]

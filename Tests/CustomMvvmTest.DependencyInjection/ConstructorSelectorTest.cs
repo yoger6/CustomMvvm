@@ -24,14 +24,14 @@ namespace CustomMvvmTest.DependencyInjection
         {
             var ctor = _selector.GetConstructor<ClassWithPublicCtor>();
 
-            Assert.IsTrue( ctor.IsPublic && !ctor.GetParameters().Any());
+            Assert.IsTrue( ctor.IsPublic && !ctor.GetParameters().Any() );
         }
 
         [Test]
         public void ReturnsConstructorDecoratedWithPrefferredConstructorAttribute()
         {
             var ctor = _selector.GetConstructor<ClassWithTwoPublicCtors>();
-            
+
             Assert.IsTrue( ctor.GetParameters().Length == 1 );
         }
 

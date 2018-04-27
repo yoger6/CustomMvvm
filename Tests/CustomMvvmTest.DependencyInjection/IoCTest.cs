@@ -4,14 +4,14 @@ using CustomMvvmTest.DependencyInjection.Stubs;
 using NUnit.Framework;
 
 namespace CustomMvvmTest.DependencyInjection
-{   
+{
     [TestFixture]
     public partial class IoCTest : TestWithIoC
     {
         [Test]
         public void HasNoPublicConstructors()
         {
-            var constructors = typeof (IoC).GetConstructors();
+            var constructors = typeof(IoC).GetConstructors();
             var isAnyPublic = constructors.Any( x => x.IsPublic );
 
             Assert.IsFalse( isAnyPublic );
@@ -50,7 +50,7 @@ namespace CustomMvvmTest.DependencyInjection
 
             Assert.AreSame( current, changed );
         }
-        
+
         [Test]
         public void ConfigureTypeReturnsFluentTypeConfiguration()
         {
