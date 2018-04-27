@@ -7,11 +7,6 @@ namespace CustomMvvmTest.Utilities
     [TestFixture]
     public class ExtensionsTest
     {
-        private class IntContainer
-        {
-            public int Number { get; set; }
-        }
-
         [Test]
         public void EachExecutesActionOnEachEnumeratedElement()
         {
@@ -24,7 +19,12 @@ namespace CustomMvvmTest.Utilities
 
             elements.Each( x => x.Number++ );
 
-            Assert.IsTrue( elements.All( x=>x.Number == 1 ) );
+            Assert.IsTrue( elements.All( x => x.Number == 1 ) );
+        }
+
+        private class IntContainer
+        {
+            public int Number { get; set; }
         }
     }
 }

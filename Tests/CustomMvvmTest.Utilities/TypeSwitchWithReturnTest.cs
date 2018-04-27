@@ -7,13 +7,13 @@ namespace CustomMvvmTest.Utilities
     [TestFixture]
     public class TypeSwitchWithReturnTest
     {
+        private TypeSwitch<int> _switch;
+
         [SetUp]
         public void Setup()
         {
             _switch = new TypeSwitch<int>();
         }
-
-        private TypeSwitch<int> _switch;
 
         [Test]
         public void ExecuteInvokesActionAssignedToType()

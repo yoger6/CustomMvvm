@@ -7,24 +7,14 @@ namespace CustomMvvmTest.Utilities
     [TestFixture]
     public class TypeSwitchTest
     {
-        [SetUp]
-        public void Setup()
-        {
-            _switch = new TypeSwitch();
-        }
-
         private TypeSwitch _switch;
         private bool _intActionInvoked;
         private bool _stringActionInvoked;
 
-        private void StringAction()
+        [SetUp]
+        public void Setup()
         {
-            _stringActionInvoked = true;
-        }
-
-        private void IntegerAction()
-        {
-            _intActionInvoked = true;
+            _switch = new TypeSwitch();
         }
 
 
@@ -75,6 +65,16 @@ namespace CustomMvvmTest.Utilities
             setting.Invoke();
 
             Assert.Throws<ArgumentException>( setting );
+        }
+
+        private void StringAction()
+        {
+            _stringActionInvoked = true;
+        }
+
+        private void IntegerAction()
+        {
+            _intActionInvoked = true;
         }
     }
 }
