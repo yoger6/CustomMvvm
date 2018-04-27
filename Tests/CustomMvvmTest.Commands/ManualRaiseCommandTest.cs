@@ -10,10 +10,7 @@ namespace CustomMvvmTest.Commands
         [Test]
         public void ThrowsExceptionIfConditionNotSet()
         {
-            TestDelegate testDelegate = () =>
-            {
-                new ManualRaiseCommand<object>( o => { }, null );
-            };
+            TestDelegate testDelegate = () => { new ManualRaiseCommand<object>( o => { }, null ); };
 
             Assert.Throws<ArgumentNullException>( testDelegate );
         }
@@ -50,7 +47,7 @@ namespace CustomMvvmTest.Commands
             Assert.IsTrue( eventRaised );
         }
 
-        private bool CallEventInvocatorAndCheckIfEventWasInvoked( bool initialCondition, bool changedCondition )
+        private static bool CallEventInvocatorAndCheckIfEventWasInvoked( bool initialCondition, bool changedCondition )
         {
             var eventRaised = false;
             var command = new ManualRaiseCommand<object>( o => { }, () => initialCondition );

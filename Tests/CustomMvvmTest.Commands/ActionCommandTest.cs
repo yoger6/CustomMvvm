@@ -31,7 +31,15 @@ namespace CustomMvvmTest.Commands
             Assert.IsTrue( wasInvoked );
         }
 
-        private bool WasActionInvoked( object parameter )
+        [Test]
+        public void CommandCanBeExecutedByDefault()
+        {
+            var command = new ActionCommand<object>( o => { } );
+
+            Assert.IsTrue( command.CanExecute( null ) );
+        }
+
+        private static bool WasActionInvoked( object parameter )
         {
             var wasInvoked = false;
             var command = new ActionCommand<object>( obj => wasInvoked = true );
@@ -39,14 +47,6 @@ namespace CustomMvvmTest.Commands
             command.Execute( parameter );
 
             return wasInvoked;
-        }
-
-        [Test]
-        public void CommandCanBeExecutedByDefault()
-        {
-            var command = new ActionCommand<object>( o => { } );
-
-            Assert.IsTrue( command.CanExecute( null ) );
         }
     }
 }

@@ -1,4 +1,6 @@
 namespace CustomMvvm
 {
-    public abstract class ViewModel : ObservableObject { }
+    public abstract class ViewModel : ObservableObject
+    {
+    }
 }
