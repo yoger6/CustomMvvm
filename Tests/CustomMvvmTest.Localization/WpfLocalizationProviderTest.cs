@@ -3,12 +3,12 @@ using System.Linq;
 using CustomMvvm;
 using CustomMvvm.Localization;
 using CustomMvvm.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace CustomMvvmTest.Localization
 {
-    [TestClass]
+    [TestFixture]
     public class WpfLocalizationProviderTest
     {
         private const string SettingsCulture = "ru";
@@ -17,7 +17,7 @@ namespace CustomMvvmTest.Localization
         private Mock<ISettingsProvider> _settingsMock;
         private Mock<IResourceManager> _resourceMock;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialize()
         {
             _settingsMock = new Mock<ISettingsProvider>();
@@ -26,7 +26,7 @@ namespace CustomMvvmTest.Localization
             _localizationProvider = new WpfLocalizationProvider( _settingsMock.Object, _resourceMock.Object );
         }
         
-        [TestMethod]
+        [Test]
         public void ByDefaultSetsCultureProvidedBySettings()
         {
             var result = CultureInfo.DefaultThreadCurrentUICulture.Name;
@@ -34,7 +34,7 @@ namespace CustomMvvmTest.Localization
             Assert.AreEqual( SettingsCulture, result );
         }
 
-        [TestMethod]
+        [Test]
         public void SetsProvidedCulture()
         {
             var culture = new CultureInfo("de");
@@ -45,7 +45,7 @@ namespace CustomMvvmTest.Localization
             Assert.AreEqual( culture, actual );
         }
 
-        [TestMethod]
+        [Test]
         public void GetCurrentCultureProvidesMostRecentlySavedValue()
         {
             var result = _localizationProvider.GetCurrentCulture();
@@ -53,7 +53,7 @@ namespace CustomMvvmTest.Localization
             Assert.AreEqual( SettingsCulture, result.Name );
         }
 
-        [TestMethod]
+        [Test]
         public void GetAvailableLanguagesParsesCulturesFromSettings()
         {
             _settingsMock.Setup( x => x["AvailableCultures"] ).Returns( SettingsAvailableCultures );
@@ -62,7 +62,7 @@ namespace CustomMvvmTest.Localization
             Assert.AreEqual( 4, result.Count() );
         }
 
-        [TestMethod]
+        [Test]
         public void ReturnsPhrasesFromResourceManager()
         {
             var key = "This is the key";
@@ -71,7 +71,7 @@ namespace CustomMvvmTest.Localization
 
             var actual = _localizationProvider[key];
 
-            Assert.AreEqual<string>( expected, actual );
+            Assert.AreEqual( expected, actual );
         }
     }
 }

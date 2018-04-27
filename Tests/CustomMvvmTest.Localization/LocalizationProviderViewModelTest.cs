@@ -3,12 +3,12 @@ using System.Globalization;
 using System.Linq;
 using CustomMvvm.Localization;
 using CustomMvvm.Utilities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace CustomMvvmTest.Localization
 {
-    [TestClass]
+    [TestFixture]
     public class LocalizationProviderViewModelTest
     {
         private IEnumerable<CultureInfo> AvailableLanguages
@@ -25,7 +25,7 @@ namespace CustomMvvmTest.Localization
         private LocalizationProviderViewModel _viewModel;
         private CultureInfo _defaultCulture;
 
-        [TestInitialize]
+        [SetUp]
         public void Initialize()
         {
             _defaultCulture = new CultureInfo( "de" );
@@ -36,19 +36,19 @@ namespace CustomMvvmTest.Localization
             _viewModel = new LocalizationProviderViewModel( _localizationMock.Object, _settingsMock.Object );
         }
 
-        [TestMethod]
+        [Test]
         public void LanguageListContainsAvailableLanguages()
         {
             Assert.AreEqual( AvailableLanguages.Count(), _viewModel.AvailableLanguages.Count );
         }
 
-        [TestMethod]
+        [Test]
         public void SelectsCurrentCulture()
         {
             Assert.AreEqual( _defaultCulture, _viewModel.SelectedCulture );
         }
 
-        [TestMethod]
+        [Test]
         public void WhenSelectedCultureChangesProviderPersistsThatChange()
         {
             var culture = new CultureInfo( "ru" );
@@ -58,7 +58,7 @@ namespace CustomMvvmTest.Localization
             _localizationMock.Verify( x => x.SetLanguage( culture ) );
         }
 
-        [TestMethod]
+        [Test]
         public void WhenNavigatingFromAndCultureNotSavedRestoresOriginalCulture()
         {
             _viewModel.SelectedCulture = new CultureInfo( "en" );
@@ -68,7 +68,7 @@ namespace CustomMvvmTest.Localization
             _localizationMock.Verify(x=>x.SetLanguage( _defaultCulture ));
         }
 
-        [TestMethod]
+        [Test]
         public void WhenNavigatingFromAndCultureSavedPersistSelectedCulture()
         {
             var cultureInfo = _viewModel.SelectedCulture = new CultureInfo( "en" );
